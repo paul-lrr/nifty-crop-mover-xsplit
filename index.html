@@ -25,57 +25,7 @@
 		let app;
 		xjs.ready().then(() => {
 			initVue();
-			app.resizeStage();
-			xjs.ExtensionWindow.on('sources-list-select', function(itemId) {
-				if (itemId) {
-					xjs.Scene.searchItemsById(itemId)
-						.then((item) => {
-							Promise.all([item.getName(), item.getCustomName(), item.getId()]).then(([name, customName, itemId]) => {
-								let itemName = (customName == '' ? name : customName);
-								app.targetItem = itemId;
-							});
-						});
-				} else {
-					app.clearStage();
-				}
-			});
-			xjs.ExtensionWindow.on('scene-add', function() {
-				app.setItemList();
-			});
 		});
-		async function getAllItems() {
-			let itemList = [{
-				id: 'i12',
-				items: []
-			}]
-
-			let numScenes = await xjs.Scene.getSceneCount();
-			for (let i = 0; i < numScenes; i++) {
-				itemList.push({
-					id: i,
-					items: []
-				})
-			}
-			itemList.forEach(async (value, i) => {
-				let scene = await xjs.Scene.getBySceneIndex(value.id);
-				value.name = await scene.getName();
-				if (value.id == 'i12' && value.name == 'null') {
-					itemList = _.drop(itemList);
-				} else if (!await scene.isEmpty()) {
-					if (value.id == 'i12') {
-						value.name = 'Preview';
-					}
-					let items = await scene.getItems();
-					items.forEach(async (item) => {
-						value['items'].push({
-							id: await item.getId(),
-							name: await item.getCustomName() || await item.getName()
-						});
-					});
-				}
-			});
-			return itemList;
-		}
 	</script>
 
 

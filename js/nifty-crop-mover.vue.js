@@ -339,7 +339,7 @@ function initVue() {
 				this.item = {};
 			},
 			setItemList() {
-				getAllItems().then((list) => {
+				this.getAllItems().then((list) => {
 					this.itemList = list;
 				})
 			},
@@ -365,6 +365,39 @@ function initVue() {
 				xsplitCrop = this.rotateCrop(xsplitCrop, 360 - this.xsplit.frame.canvasRotate);
 
 				this.xjsTarget.setCropping(xsplitCrop);
+			},
+			async getAllItems() {
+				let itemList = [{
+					id: 'i12',
+					items: []
+				}]
+
+				let numScenes = await xjs.Scene.getSceneCount();
+				for (let i = 0; i < numScenes; i++) {
+					itemList.push({
+						id: i,
+						items: []
+					})
+				}
+				itemList.forEach(async (value, i) => {
+					let scene = await xjs.Scene.getBySceneIndex(value.id);
+					value.name = await scene.getName();
+					if (value.id == 'i12' && value.name == 'null') {
+						itemList = _.drop(itemList);
+					} else if (!await scene.isEmpty()) {
+						if (value.id == 'i12') {
+							value.name = 'Preview';
+						}
+						let items = await scene.getItems();
+						items.forEach(async (item) => {
+							value['items'].push({
+								id: await item.getId(),
+								name: await item.getCustomName() || await item.getName()
+							});
+						});
+					}
+				});
+				return itemList;
 			}
 		},
 		mounted() {
@@ -372,6 +405,20 @@ function initVue() {
 			window.addEventListener('mousemove', this.handleMouseMove);
 			window.addEventListener('keydown', this.handleKeydown);
 			window.addEventListener('keyup', this.handleKeyup);
+
+			xjs.ExtensionWindow.on('sources-list-select', async (itemId) => {
+				if (itemId) {
+					let item = await xjs.Scene.searchItemsById(itemId)
+					this.targetItem = await item.getId();
+				} else {
+					this.clearStage();
+				}
+			});
+			xjs.ExtensionWindow.on('scene-add', () => {
+				this.setItemList();
+			});
+
+			this.resizeStage()
 			this.setItemList();
 		}
 	});
