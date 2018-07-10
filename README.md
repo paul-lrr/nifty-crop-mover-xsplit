@@ -20,7 +20,7 @@ Without Nifty Crop Mover | With Nifty Crop Mover
 ## Usage
 To use the extension, simply select an item by clicking on it on the stage or in the sources list. The extension should display the frame of the selected item in green, with the area of the item that is currently cropped shown in grey. Click and drag anywhere in the grey box to change the item cropping. Click and drag on any of the four corner squares to scale the item (scaling is always proportional). You cannot move or scale the item to be within the frame. The Extension should also take into account if the item has been rotated on the Z axis (2d rotation). It *does not* currently account for X/Y axis (3D) rotation or horizonal/vertical flipping.
 
-Note: Due to how the XSplit API triggers events, the representation of a source in the Nifty Crop Mover extension window will not automatically update to reflect changes to the item done directly on the XSplit stage (moving, resizing, cropping, etc). To update the Nifty Crop Mover extension, simply reselect the item (by selecting something else and then selecting the item again).
+*Note: Due to how the XSplit API triggers events, the representation of a source in the Nifty Crop Mover extension window will not automatically update to reflect changes to the item done directly on the XSplit stage (moving, resizing, cropping, etc). To update the Nifty Crop Mover extension, simply reselect the item (by selecting something else and then selecting the item again).*
 
 ### Extra Features
 ##### Precise Movement
@@ -44,4 +44,4 @@ ie. The item scales from the center when `alt/option` is held down. Fairly strai
 ##### Handling 3d Transforms/Flipping
 I've messed around with this a little but had trouble translating XSplit transformation information into css transforms.
 ##### OBS Compatibility
-OBS also lacks the crop moving functionality that this plugin provides. In theory, the main part of the plugin could stay the same and it would just need to replace the XSplit API called with equivalent obs-websocket events. I don't use OBS, so I haven't looked into it too much, but I would be interested if someone wanted to take this on.
+OBS also lacks the crop moving functionality that this plugin provides. In theory, the main part of the plugin could stay the same and it would just need to replace the XSplit API calls with equivalent obs-websocket events. I don't use OBS, so I haven't looked into it too much, but I would be interested if someone wanted to take this on.
