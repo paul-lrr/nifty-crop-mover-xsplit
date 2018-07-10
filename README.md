@@ -34,3 +34,14 @@ In addition to selecting an item in the main XSplit window, you can also manuall
 
 ##### Selecting an item in the Preview Editor
 The XSplit API *does not* register item selections in the Preview Editor. In order to adjust the cropping of an item in the Preview Editor, open the preview and then click the reload arrow beside the Item Selection menu at the bottom of the extension window. Open the Item Selection menu and you should see a new **Preview** scene listed at the top.
+
+## Possible Future Features
+ie. Stuff I would like to do but don't have the time right now. If you would like to help with any of these, feel free to email me (paul@loadingreadyrun.com) or just submit a PR.
+##### Refactor/Optimize Scaling and Collision Detection
+I feel like there is probably a more elegant/efficient way to manage the item scaling and frame collision detection, but I don't know enough geometry.
+##### Center Origin Scaling
+ie. The item scales from the center when `alt/option` is held down. Fairly straight forward, but would require a redo of the frame collision detection system.
+##### Handling 3d Transforms/Flipping
+I've messed around with this a little but had trouble translating XSplit transformation information into css transforms.
+##### OBS Compatibility
+OBS also lacks the crop moving functionality that this plugin provides. In theory, the main part of the plugin could stay the same and it would just need to replace the XSplit API called with equivalent obs-websocket events. I don't use OBS, so I haven't looked into it too much, but I would be interested if someone wanted to take this on.
