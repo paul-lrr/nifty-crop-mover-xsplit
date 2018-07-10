@@ -5,7 +5,7 @@ A Xsplit Extension for advance item copping flexibility
 Given an item on the XSplit stage that has been cropped to fit a layout, this extension allows you to move and scale the item without moving its frame. It should work with any type of source (image, video, camera, html, etc.) and accurately represent items rotated in the Z axis (ie. 2D rotation) in 90° increments as well as arbitrary angles.
 
 ### Example
-Without Nifty Crop | With Nifty crop
+Without Nifty Crop Mover | With Nifty Crop Mover
 -------------------|--------------
 ![Before](media/crop-demo-before.gif)|![After](media/crop-demo-after.gif)
 
@@ -20,7 +20,7 @@ Without Nifty Crop | With Nifty crop
 ## Usage
 To use the extension, simply select an item by clicking on it on the stage or in the sources list. The extension should display the frame of the selected item in green, with the area of the item that is currently cropped shown in grey. Click and drag anywhere in the grey box to change the item cropping. Click and drag on any of the four corner squares to scale the item (scaling is always proportional). You cannot move or scale the item to be within the frame. The Extension should also take into account if the item has been rotated on the Z axis (2d rotation). It *does not* currently account for X/Y axis (3D) rotation or horizonal/vertical flipping.
 
-Note: Due to how the XSplit API triggers events, the representation of a source in the Nifty Crop extension window will not automatically update to reflect changes to the item done directly on the XSplit stage (moving, resizing, cropping, etc). To update the Nifty Crop extension, simply reselect the item (by selecting something else and then selecting the item again).
+Note: Due to how the XSplit API triggers events, the representation of a source in the Nifty Crop Mover extension window will not automatically update to reflect changes to the item done directly on the XSplit stage (moving, resizing, cropping, etc). To update the Nifty Crop Mover extension, simply reselect the item (by selecting something else and then selecting the item again).
 
 ### Extra Features
 ##### Precise Movement
