@@ -45,3 +45,9 @@ ie. The item scales from the center when `alt/option` is held down. Fairly strai
 I've messed around with this a little but had trouble translating XSplit transformation information into css transforms.
 ##### OBS Compatibility
 OBS also lacks the crop moving functionality that this plugin provides. In theory, the main part of the plugin could stay the same and it would just need to replace the XSplit API calls with equivalent obs-websocket events. I don't use OBS, so I haven't looked into it too much, but I would be interested if someone wanted to take this on.
+
+## LRRTech Demo Stream
+Here is recording of the live stream where I introduced the extension and demonstrate its capabilities
+[![Nifty Crop Mover Demo](http://img.youtube.com/vi/36dqj7zJZ0c/0.jpg)](http://www.youtube.com/watch?v=36dqj7zJZ0c "Nifty Crop Mover Demo")
+
+*Note: This is a live stream directed towards a general audience, so I go over a lot of details that will be redundant if you are already familiar with the extension*
