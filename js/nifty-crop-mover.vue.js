@@ -175,7 +175,7 @@ function initVue() {
 						left: this.item.left + (this.slow ? rotated[0] / this.stageRatio : rotated[0]),
 					}
 					this.item = this.checkBounds(bounds);
-					this.setCrop();
+					this.setCropThrottle();
 				}
 				if (this.mode.action == 'scale') {
 					let bounds = {
@@ -188,7 +188,7 @@ function initVue() {
 
 					bounds = this.checkBounds(bounds);
 					this.item = bounds;
-					this.setCrop();
+					this.setCropThrottle();
 				}
 			},
 			scaleBox(bounds, delta) {
@@ -366,6 +366,9 @@ function initVue() {
 
 				this.xjsTarget.setCropping(xsplitCrop);
 			},
+			setCropThrottle: _.throttle(function() {
+				this.setCrop();
+			}, 10),
 			async getAllItems() {
 				let itemList = [{
 					id: 'i12',
