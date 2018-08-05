@@ -1,14 +1,13 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Nifty Crop Mover</title>
-
+	<script src="http://localhost:8098"></script>
 	<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 	<div id="app" @keydown.17="slow=true" @keyup.17="slow=false">
-		width:{{xsplit.item.width}} nativeWidth:{{xsplit.item.nativeWidth}} oversize:{{oversize}}
 		<div id="stage" :style="stage" :class="{slow:slow}">
 			<move-resize v-if="xsplit.item.width" ref="moveResize" :frame="frame" :item="item" :oversize="oversize" @set-mode="handleMode"></move-resize>
 			<div v-else id="no-item">Please choose an item by clicking on it in XSplit or selecting it in the menu below</div>
@@ -18,7 +17,7 @@
 	</div>
 	<script src="js/xjs.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
 	<script src="js/nifty-crop-mover.vue.js"></script>
 	<script>
 		let xjs = require('xjs');
